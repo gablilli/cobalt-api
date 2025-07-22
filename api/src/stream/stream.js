@@ -1,3 +1,4 @@
+import youtube from "./youtube.js";
 import proxy from "./proxy.js";
 import ffmpeg from "./ffmpeg.js";
 
@@ -7,6 +8,8 @@ import { internalStream } from "./internal.js";
 export default async function(res, streamInfo) {
     try {
         switch (streamInfo.type) {
+            case "youtube":
+              return await youtube(streamInfo, res);    
             case "proxy":
                 return await proxy(streamInfo, res);
 
